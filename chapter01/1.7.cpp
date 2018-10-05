@@ -14,15 +14,15 @@ int main(void)
 	}else{
 		while(iofile>>strs[i++]);
 	}
-	for(int j=0;j<i;j++)
+	for(int j=0;j<i-1;j++)
 	{
-		cout<<strs[j]<<" ";
+		cout<<strs[j]<<endl;
 	}
-	cout<<endl;
+//	cout<<endl;
 	cout<<"after sort"<<endl;
 	cout<<*(strs.begin())<<endl;
-	sort(strs.begin(),strs.end());
-	cout<<"i:"<<i<<" "<<strs[0]<<endl;
+	sort(strs.begin(),strs.begin()+i-1);
+	cout<<"i:"<<i<<" "<<strs[1]<<endl;
 	for(int j=0;j<i;j++)
         {
                 cout<<strs[j]<<" ";
