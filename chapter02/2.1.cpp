@@ -18,7 +18,7 @@ int main()
 }
 bool fibon_elem(int pos,int & elem)
 {
-    if(pos<=0||pos>1024){//hehe
+    if(pos<=0||pos>1024){
         elem=0;
         return false;
     }
