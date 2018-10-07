@@ -9,7 +9,7 @@
             "command": "g++",
             "args": [
                 "-g",
-                "${workspaceFolder}/chapter01/1.7.cpp",
+                "${workspaceFolder}/chapter02/2.2.cpp",
                 "-o",
                 "build"
             ]
