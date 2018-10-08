@@ -1,59 +1,53 @@
 #include<iostream>
 #include<vector>
+#include<algorithm>
 using namespace std;
 template <typename T>
-void imax(T  a,T  b);
+T imax(T  a,T  b);
 
 template<typename T>
-void imax(vector<T> a);
+T imax(vector<T> a);
 
 template<typename T>
-void imax(vector<T>  ves,int len);
+T imax(const T *  ves,int len);
 int main(void)
 {
     int a=0,b=1;
-    imax(a,b);
+    cout<<imax(a,b)<<endl;
     double a1=0.0,b1=0.2;
-    imax(a1,b1);
+    cout<<imax(a1,b1)<<endl;
     string a2="hehe",b2="haha";
-    imax(a2,b2);
+    cout<<imax(a2,b2)<<endl;
     vector<int> ves0(3);
     ves0[0]=1;ves0[1]=2,ves0[2]=3;
-    imax(ves0);
+    cout<<imax(ves0)<<endl;
     vector<double> ves1(3);
     ves1[0]=1.0;ves1[1]=2.1,ves1[2]=3.1;
-    imax(ves1);
+    cout<<imax(ves1)<<endl;
     vector<string> ves2(3);
     ves2[0]="I",ves2[1]="am",ves2[2]="zhang!";
-    imax(ves2);
-    imax(ves0,3);
-    imax(ves1,3);
-    imax(ves2,3);
+    cout<<imax(ves2)<<endl;
+    int arr0[3]={1,4,7};
+    double arr1[3]={1.0,4.0,7.4};
+    string arr2[3]={"I","am","Jsn"};
+    cout<<imax(arr0,3)<<endl;
+    cout<<imax(arr1,3)<<endl;
+    cout<<imax(arr2,3)<<endl;
     return 0;
 }
 
 template<typename T>
-void imax(T  a,T  b)
+T imax(T  a,T  b)
 {
-    cout<<a<<"\t"<<b<<endl;
+    return a>b?a:b;
 }
 template<typename T>
-void imax(vector<T>  ves)
+T imax(vector<T>  ves)
 {
-    cout<<"type1"<<endl;
-    for(int i=0;i<ves.size();i++)
-    {
-        cout<<ves[i]<<"\t";
-    }
-    cout<<endl;
+    return *max_element(ves.begin(),ves.end());
 }
 template<typename T>
-void imax(vector<T>  ves,int len)
+T imax(const T *  ves,int len)
 {
-    cout<<"type2"<<endl;
-    for(int i=0;i<len;i++)
-    {
-        cout<<ves[i]<<"\t";
-    }
-    cout<<endl;
+    return *max_element(ves,ves+len);
 }

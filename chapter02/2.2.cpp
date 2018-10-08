@@ -34,12 +34,10 @@ const vector<double> * pentagonal(int num)
         cerr<<"num is two big!"<<endl;
         return NULL;
     }
-    int n=1;
-    if(num>ves.size())
-        for(int i=ves.size();i<num;i++)
-        {
-            ves.push_back((i+1)*(3*(i+1)-1)/2);
-        }
+    for(int i=ves.size();i<num;i++)
+    {
+        ves.push_back((i+1)*(3*(i+1)-1)/2);
+    }
     return &ves;
 }
 template <typename T>
