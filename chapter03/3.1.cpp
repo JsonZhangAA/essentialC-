@@ -17,6 +17,14 @@ int main(void)
             mps[tempWord]++;
         }
     }
+    cout<<"Please input the word that you want to search"<<endl;
+    string serarchWord;
+    cin>>serarchWord;
+    if(mps.count(serarchWord)>0){
+        cout<<"the word already exsit"<<endl;
+    }else{
+        cout<<"the word is not  exsit"<<endl;
+    }
     for(map<string,int>::iterator it=mps.begin();it!=mps.end();it++){
         cout<<it->first<<"： "<<it->second<<endl;
     }
