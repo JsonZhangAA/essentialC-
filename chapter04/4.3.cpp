@@ -3,13 +3,16 @@
 using namespace std;
 class Data{
     public:
-        static const string program_name=new string("Tim");
-        const string version_stamp="4.34";
+        Data():id(9){}
+        static string program_name;
+        static string version_stamp;
         static const int version_number=5;
         static const int tests_run=4;
         static const int tests_passed=4;
-        int id=9;
+        const int id=9;
 };
+string Data::program_name="Tim";
+string Data::version_stamp="4.3";
 int main(void){
     cout<<"Data::program_name "<<Data::program_name<<endl;
     cout<<"Data::version_stamp "<<Data::version_stamp<<endl;
