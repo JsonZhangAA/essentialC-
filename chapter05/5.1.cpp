@@ -8,7 +8,8 @@ class Stack_Exception:public exception{
 public:
     Stack_Exception(const char * _msg):msg(_msg){
     }
-    const char * what(){
+    const char * what() const noexcept{
+        //cout<<"msg: "<<msg<<endl;
         return msg.c_str();
     }
 private:
@@ -130,7 +131,7 @@ int main(){
         peek(pst,pst.size()-1);
         cout<<pst;
     }
-    catch(PushOnFull & msg){
+    catch(exception & msg){
         cout<<msg.what();
         cout<<endl;
     }
