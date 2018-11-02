@@ -1,8 +1,28 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <exception>
 using namespace std;
-#define maxLength 128;
+#define maxLength 5
+class Stack_Exception:public exception{
+public:
+    Stack_Exception(const char * _msg):msg(_msg){
+    }
+    const char * what(){
+        return msg.c_str();
+    }
+private:
+    string msg;
+};
+class PushOnFull:public Stack_Exception{
+public:
+    PushOnFull():Stack_Exception("Push on Full"){}
+};
+class PullOnEmpty:public Stack_Exception{
+public:
+    PullOnEmpty():Stack_Exception("pull on empty"){}
+};
+
 class stack{
     public:
         stack(){
@@ -51,6 +71,9 @@ bool LIFO_Stack::pop(string & temp){
     return true;
 }
 void LIFO_Stack::push(string temp){
+    if(sta.size()==maxLength){
+        throw PushOnFull();
+    }
     sta.push_back(temp);
 }
 void peek(stack & st,int size){
@@ -88,22 +111,28 @@ ostream & operator<<(ostream & os,stack & st){
     return os;
 }
 int main(){
-    LIFO_Stack st;
-    string str;
-    while(cin>>str&&str!="quit"&&!st.full())
-        st.push(str);
-    cout<<"\n"<<"About to call peek() with LIFO_Stack"<<endl;
-    peek(st,st.size()-1);
-    cout<<st;
+    try{
+        LIFO_Stack st;
+        string str;
+        while(cin>>str&&str!="quit")
+            st.push(str);
+        cout<<"\n"<<"About to call peek() with LIFO_Stack"<<endl;
+        peek(st,st.size()-1);
+        cout<<st;
 
-    Peekback_Stack pst;
-    while(!st.empty()){
-        string t;
-        if(st.pop(t))
-            pst.push(t);
+        Peekback_Stack pst;
+        while(!st.empty()){
+            string t;
+            if(st.pop(t))
+                pst.push(t);
+        }
+        cout<<"About to call peek() with Peekback_Stack"<<endl;
+        peek(pst,pst.size()-1);
+        cout<<pst;
     }
-    cout<<"About to call peek() with Peekback_Stack"<<endl;
-    peek(pst,pst.size()-1);
-    cout<<pst;
+    catch(PushOnFull & msg){
+        cout<<msg.what();
+        cout<<endl;
+    }
     return 0;
 }

@@ -107,6 +107,10 @@ ostream & Matrix<elemType>::print(ostream & os){
     } 
     return os;
 }
+class TestClass{
+public:
+    int i,j;
+};
 int main()
 {
     Matrix<float> identity(4,4);

@@ -1,0 +1,35 @@
+int * alloc_and_init(string file_name){
+    ifstream infile(filename.c_str());
+    if(!infile){
+        cout<<"open file "<<file_name<<" failed!"<<endl;
+        return 0;
+    }
+    int elem_cnt;
+    infile>>elem_cnt;
+    if(!infile){
+        cout<<"read value filed"<<endl;
+        return 0;
+    }
+    try{
+        int * pi=allocate_array(elem_cnt);
+        int elem;
+        int index=0;
+        while(infile>>elem)
+            pi[index++]=elem;
+        sort_array(pi,elem_cnt);
+        register_data(pi);
+    }
+    catch(int & msg){
+        cerr<<"sort_array failed: thrown integer value: "<<msg<<endl;
+        return 0;
+    }
+    catch(const noMem & memFail){
+        cerr<<"allocate_array failed: thrown noMem: "<<memFail.what()<<endl;
+        return 0;
+    }
+    catch(string & msg){
+        cerr<<"register_data failed: thrown string: "<<msg<<endl;
+        return 0;
+    }
+    return pi;
+}

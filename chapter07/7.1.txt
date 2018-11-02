@@ -1,0 +1,18 @@
+1)ifstream infile(file_name.c_str());
+ifstream接受的参数是const char *
+
+2)
+ifstream infile(file_name.c_str());
+if(!infile)
+检查文件是否成功开启
+
+3）
+int elem_cnt;
+infile>>elem_cnt;
+if(!infile)
+如果文件中是非数字的字符，那么读入便会发生失败。
+
+4）
+int *pi=allocate_array(elem_cnt);
+if(!pi)
+allocate_array没有配置到内存
